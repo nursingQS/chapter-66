@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 66: Infectious Diseases – NCLEX Review</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(145deg, #b3bf9e, #95a37a);
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+        }
+        
+        .container {
+            width: 100vw;
+            height: 100vh;
+            background: #f0f2e9;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 0 40px rgba(0,0,0,0.2);
+        }
+        
+        .header {
+            background: linear-gradient(145deg, #4f7345, #2f5627);
+            color: white;
+            padding: 20px 30px;
+            flex-shrink: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 85px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            border-bottom: 4px solid #1c3b16;
+        }
+        
+        .header-content {
+            flex: 1;
+        }
+        
+        .header h1 {
+            font-size: 1.7rem;
+            margin: 0;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .subtitle {
+            font-size: 1rem;
+            opacity: 0.95;
+            margin-top: 5px;
+            font-weight: 400;
+        }
+        
+        .counter {
+            background: rgba(255,255,255,0.2);
+            padding: 10px 25px;
+            border-radius: 40px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            min-width: 100px;
+            text-align: center;
+            white-space: nowrap;
+            margin-left: 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(5px);
+        }
+        
+        .progress-container {
+            width: 100%;
+            height: 8px;
+            background: #d1ddc0;
+            flex-shrink: 0;
+            position: relative;
+        }
+        
+        .progress-bar {
+            background: linear-gradient(90deg, #6f9a60, #2f5627);
+            height: 100%;
+            width: 0%;
+            transition: width 0.4s ease;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            padding: 30px;
+            background: #e4ecd9;
+        }
+        
+        .question-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            border: 3px solid #b1c79e;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+        
+        .question-header {
+            display: flex;
+            gap: 25px;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+        
+        .question-number {
+            background: linear-gradient(145deg, #4f7345, #2f5627);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            font-weight: bold;
+            flex-shrink: 0;
+            box-shadow: 0 6px 20px rgba(47,86,39,0.4);
+        }
+        
+        .question-text {
+            font-size: 1.4rem;
+            line-height: 1.7;
+            color: #27421f;
+            flex-grow: 1;
+            font-weight: 600;
+            padding-right: 15px;
+        }
+        
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .option {
+            padding: 20px;
+            border: 3px solid #cfc0e3;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 1.15rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-color: #b1c79e;
+        }
+        
+        .option:hover {
+            background: #e3f0d7;
+            border-color: #7e9f6c;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(79,115,69,0.15);
+        }
+        
+        .option-letter {
+            background: linear-gradient(145deg, #4f7345, #2f5627);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            border: 3px solid #1c3b16;
+        }
+        
+        .option.correct {
+            background: linear-gradient(145deg, #66bb6a, #43a047);
+            border-color: #2e7d32;
+            color: white;
+        }
+        
+        .option.correct .option-letter {
+            background: #2e7d32;
+            color: white;
+            border-color: #1b5e20;
+        }
+        
+        .option.incorrect {
+            background: linear-gradient(145deg, #ef5350, #e53935);
+            border-color: #b71c1c;
+            color: white;
+        }
+        
+        .option.incorrect .option-letter {
+            background: #b71c1c;
+            color: white;
+            border-color: #8b0000;
+        }
+        
+        .feedback-area {
+            flex-shrink: 0;
+        }
+        
+        .feedback {
+            padding: 25px;
+            border-radius: 15px;
+            display: none;
+            align-items: center;
+            gap: 20px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            animation: slideIn 0.3s ease;
+            margin-bottom: 20px;
+        }
+        
+        .feedback.correct {
+            background: linear-gradient(145deg, #c8e6c9, #a5d6a7);
+            border: 3px solid #2e7d32;
+            color: #1b5e20;
+            display: flex;
+        }
+        
+        .feedback.incorrect {
+            background: linear-gradient(145deg, #ffcdd2, #ef9a9a);
+            border: 3px solid #b71c1c;
+            color: #710000;
+            display: flex;
+        }
+        
+        .feedback-icon {
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+        
+        .rationale {
+            background: linear-gradient(145deg, #eff6e8, #e3efd7);
+            border: 3px solid #4f7345;
+            border-radius: 15px;
+            padding: 25px;
+            display: none;
+            animation: slideIn 0.3s ease;
+        }
+        
+        .rationale.show {
+            display: block;
+        }
+        
+        .rationale h4 {
+            color: #2f5627;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.3rem;
+        }
+        
+        .rationale p {
+            color: #27421f;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            background: #cfc0e3;
+            border-top: 3px solid #bba8d7;
+            flex-shrink: 0;
+            height: 80px;
+            background: #ccddbb;
+            border-top: 3px solid #b1c79e;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .btn {
+            padding: 15px 35px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            white-space: nowrap;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(145deg, #4f7345, #2f5627);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(47,86,39,0.4);
+            background: linear-gradient(145deg, #2f5627, #1c3b16);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(145deg, #8daa7c, #6f8f5f);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(111,143,95,0.4);
+            background: linear-gradient(145deg, #6f8f5f, #537344);
+        }
+        
+        .btn-cancel {
+            background: linear-gradient(145deg, #ef5350, #e53935);
+            color: white;
+            display: none;
+        }
+        
+        .btn-cancel:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(229,57,53,0.4);
+            background: linear-gradient(145deg, #e53935, #c62828);
+        }
+        
+        .btn-cancel.show {
+            display: flex;
+        }
+        
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                height: 75px;
+                padding: 15px 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.3rem;
+            }
+            
+            .question-text {
+                font-size: 1.2rem;
+            }
+            
+            .option {
+                padding: 15px;
+                font-size: 1.05rem;
+                gap: 15px;
+            }
+            
+            .option-letter {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+            
+            .question-area {
+                padding: 20px;
+            }
+            
+            .navigation {
+                padding: 15px 20px;
+                height: 70px;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+            
+            .nav-buttons {
+                gap: 10px;
+            }
+        }
+        
+        @media (max-height: 700px) {
+            .header {
+                height: 70px;
+                padding: 15px 20px;
+            }
+            
+            .question-area {
+                padding: 20px;
+            }
+            
+            .question-text {
+                font-size: 1.2rem;
+            }
+            
+            .option {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="header-content">
+            <h1>🦠 Chapter 66: Infectious Diseases</h1>
+            <div class="subtitle">32 NCLEX-style questions · precautions, STIs, vaccines</div>
+        </div>
+        <div class="counter" id="counter">1/32</div>
+    </div>
+    
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+    
+    <div class="main-content">
+        <div class="question-area">
+            <div class="question-header">
+                <div class="question-number" id="questionNumber">1</div>
+                <div class="question-text" id="question"></div>
+            </div>
+            
+            <div class="options-container" id="options"></div>
+        </div>
+        
+        <div class="feedback-area">
+            <div class="feedback" id="feedback">
+                <div class="feedback-icon" id="feedbackIcon"></div>
+                <div id="feedbackText"></div>
+            </div>
+            <div class="rationale" id="rationale">
+                <h4>📘 RATIONALE:</h4>
+                <p id="rationaleText"></p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="navigation">
+        <button class="btn btn-secondary" id="prevBtn" onclick="previousCard()">
+            ⬅️ Previous
+        </button>
+        <div class="nav-buttons">
+            <button class="btn btn-cancel" id="cancelBtn" onclick="cancelSelection()">
+                ❌ Cancel
+            </button>
+            <button class="btn btn-primary" id="nextBtn" onclick="nextCard()">
+                Next ➡️
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Chapter 66: Management of Patients with Infectious Diseases – exact 32 questions from document
+    const questions = [
+        {
+            id: 1,
+            question: "1. A nurse is caring for a child who was admitted to the pediatric unit with infectious diarrhea. The nurse should be alert to what assessment finding as an indicator of dehydration?",
+            options: [
+                "A. Labile BP",
+                "B. Weak pulse",
+                "C. Fever",
+                "D. Diaphoresis"
+            ],
+            correct: 1, // B
+            rationale: "Assessment of dehydration includes evaluation of thirst, oral mucous membrane dryness, sunken eyes, a weakened pulse, and loss of skin turgor. Diaphoresis, labile BP, and fever are not characteristic signs and symptoms of dehydration. (PTS:1 REF:p.2166)"
+        },
+        {
+            id: 2,
+            question: "2. A nursing home resident has been diagnosed with Clostridium difficile. What type of precautions should the nurse implement to prevent the spread of this infectious disease to other residents?",
+            options: [
+                "A. Contact",
+                "B. Droplet",
+                "C. Airborne",
+                "D. Positive pressure isolation"
+            ],
+            correct: 0, // A
+            rationale: "Contact precautions are used for organisms that are spread by skin-to-skin contact, such as antibiotic-resistant organisms or Clostridium difficile. Droplet precautions are used for organisms that can be transmitted by close, face-to-face contact, such as influenza or meningococcal meningitis. Airborne precautions are required for clients with presumed or proven pulmonary TB or chickenpox. Positive pressure isolation is unnecessary and ineffective. (PTS:1 REF:p.2151)"
+        },
+        {
+            id: 3,
+            question: "3. A client has a concentration of S. aureus located on the skin. The client is not showing signs of increased temperature, redness, or pain at the site. The nurse is aware that this is a sign of a microorganism at which of the following stages?",
+            options: [
+                "A. Infection",
+                "B. Colonization",
+                "C. Disease",
+                "D. Bacteremia"
+            ],
+            correct: 1, // B
+            rationale: "Colonization refers to the presence of microorganisms without host interference or interaction. Infection is a condition in which the host interacts physiologically and immunologically with a microorganism. Disease is the decline in wellness of a host due to infection. Bacteremia is a condition of bacteria in the blood. (PTS:1 REF:p.2148)"
+        },
+        {
+            id: 4,
+            question: "4. An infectious outbreak of unknown origin has occurred in a long-term care facility. The nurse who oversees care at the facility should report the outbreak to what organization?",
+            options: [
+                "A. Centers for Disease Control and Prevention (CDC)",
+                "B. American Medical Association (AMA)",
+                "C. Environmental Protection Agency (EPA)",
+                "D. American Nurses Association (ANA)"
+            ],
+            correct: 0, // A
+            rationale: "The goals of the CDC are to provide scientific recommendations regarding disease prevention and control to reduce disease, which it includes in publications. As such, outbreaks of unknown origin should normally be reported to the CDC. The AMA is the professional organization for medical doctors; the EPA oversees our environment; the ANA is the professional organization for American nurses. (PTS:1 REF:p.2149)"
+        },
+        {
+            id: 5,
+            question: "5. The infectious control nurse is presenting a program on West Nile virus for a local community group. To reduce the incidence of this disease, the nurse should recommend what action?",
+            options: [
+                "A. Covering open wounds at all times",
+                "B. Vigilant handwashing in home and work settings",
+                "C. Consistent use of mosquito repellents",
+                "D. Annual vaccination"
+            ],
+            correct: 2, // C
+            rationale: "West Nile virus is transmitted by mosquitoes, which become infected by biting birds that are infected with the virus. Prevention of mosquito bites can reduce the risk of contracting the disease. Handwashing and bandaging open wounds are appropriate general infection control measures, but these actions do not specifically prevent West Nile virus, for which no vaccine currently exists. (PTS:1 REF:p.2174)"
+        },
+        {
+            id: 6,
+            question: "6. An immunosuppressed client is receiving chemotherapy treatment at home. What infection-control measure should the nurse recommend to the family?",
+            options: [
+                "A. Family members should avoid receiving vaccinations until the client has recovered from his or her illness.",
+                "B. Wipe down hard surfaces with a dilute bleach solution once per day.",
+                "C. Maintain cleanliness in the home, but recognize that the home does not need to be sterile.",
+                "D. Avoid physical contact with the client unless absolutely necessary."
+            ],
+            correct: 2, // C
+            rationale: "When assessing the risk of the immunosuppressed client in the home environment for infection, it is important to realize that intrinsic colonizing bacteria and latent viral infections present a greater risk than do extrinsic environmental contaminants. The nurse should reassure the client and family that their home needs to be clean but not sterile. Common-sense approaches to cleanliness and risk reduction are helpful. The family need not avoid vaccinations, and it is unnecessary to avoid all contact or to wipe down surfaces daily. (PTS:1 REF:p.2158)"
+        },
+        {
+            id: 7,
+            question: "7. A medical nurse is careful to adhere to infection control protocols, including handwashing. Which statement about handwashing supports the nurse's practice?",
+            options: [
+                "A. Frequent handwashing reduces transmission of pathogens from one client to another.",
+                "B. Wearing gloves is known to be an adequate substitute for handwashing.",
+                "C. Bar soap is preferable to liquid soap.",
+                "D. Waterless products should be avoided in situations where running water is unavailable."
+            ],
+            correct: 0, // A
+            rationale: "Whether gloves are worn or not, handwashing is required before and after client contact because thorough handwashing reduces the risk of cross-contamination. Bar soap should not be used because it is a potential carrier of bacteria. Soap dispensers are preferable, but they must also be checked for bacteria. When water is unavailable, the nurse should wash using a liquid hand sanitizer. (PTS:1 REF:p.2154)"
+        },
+        {
+            id: 8,
+            question: "8. A male client with gonorrhea asks the nurse how they can reduce the risk of contracting another sexually transmitted infection (STI). The client is not in a monogamous relationship. The nurse should instruct the client to do what action?",
+            options: [
+                "A. Ask all potential sexual partners if they have an STI.",
+                "B. Wear a condom every time the client has intercourse.",
+                "C. Consider intercourse to be risk-free if the partner has no visible discharge, lesions, or rashes.",
+                "D. Aim to limit the number of sexual partners to fewer than five over their lifetime."
+            ],
+            correct: 1, // B
+            rationale: "Wearing a condom during intercourse considerably reduces the risk of contracting a sexually transmitted infection (STI). The other options may help reduce the risk for contracting an STI, but not to the extent that wearing a condom will. A monogamous relationship reduces the risk of contracting STIs. (PTS:1 REF:p.2170)"
+        },
+        {
+            id: 9,
+            question: "9. A client on airborne precautions asks the nurse to leave the door open. What is the nurse's best reply?",
+            options: [
+                "A. 'I have to keep your door shut at all times. I'll open the curtains so that you don't feel so closed in.'",
+                "B. 'I'll keep the door open for you, but please try to avoid moving around the room too much.'",
+                "C. 'I can open your door if you wear this mask.'",
+                "D. 'I can open your door, but I'll have to come back and close it in a few minutes.'"
+            ],
+            correct: 0, // A
+            rationale: "The nurse is placing the client on airborne precautions, which require that doors and windows be closed at all times. Opening the curtains is acceptable. Clients should be in airborne infection isolation rooms, engineered to provide negative air pressure, rapid turnover of air, and air either highly filtered or exhausted directly to the outside. A closed door maintains the needed negative pressure and controls the spread of the disease that is spread by very small respiratory particles that are suspended as aerosol. Antibiotics, wearing a mask, and standard precautions are not sufficient to allow the client's door to be open. (PTS:1 REF:p.2151)"
+        },
+        {
+            id: 10,
+            question: "10. Family members are caring for a client with HIV in the client's home. What should the nurse encourage family members to do to reduce the risk of infection transmission?",
+            options: [
+                "A. Use caution when shaving the client.",
+                "B. Use separate dishes for the client and family members.",
+                "C. Use separate bed linens for the client.",
+                "D. Disinfect the client's bedclothes regularly."
+            ],
+            correct: 0, // A
+            rationale: "When caring for a client with HIV at home, family members should use caution when providing care that may expose them to the client's blood, such as shaving. Dishes, bed linens, and bedclothes, unless contaminated with blood, only require the usual cleaning. (PTS:1 REF:p.2158)"
+        },
+        {
+            id: 11,
+            question: "11. A nurse is preparing to administer a client's scheduled dose of subcutaneous heparin. To reduce the risk of needlestick injury, the nurse should perform which action with used needles?",
+            options: [
+                "A. For multiple injections, insert the needle into the bed.",
+                "B. Recap the needle immediately before leaving the room.",
+                "C. Avoid recapping the needle before disposing of it.",
+                "D. Wear gloves when administering the injection."
+            ],
+            correct: 2, // C
+            rationale: "Used needles should not be recapped or inserted into the bed even with multiple injections. Recapping of needles is typically done after a medication is drawn up and before injection. Specific steps are used in the process to avoid injury. Used needles are placed directly into puncture-resistant containers near the place where they are used. Gloves do not prevent needlestick injuries. (PTS:1 REF:p.2151)"
+        },
+        {
+            id: 12,
+            question: "12. A 16-year-old male client comes to the free clinic and is subsequently diagnosed with primary syphilis. What health problem most likely prompted the client to seek care?",
+            options: [
+                "A. The emergence of a chancre on his penis",
+                "B. Painful urination",
+                "C. Signs of a systemic infection",
+                "D. Unilateral testicular swelling"
+            ],
+            correct: 0, // A
+            rationale: "Primary syphilis occurs 2 to 3 weeks after initial inoculation with the organism. A painless chancre develops at the site of infection. Initial infection with syphilis is not associated with testicular swelling, painful voiding, or signs of systemic infection. (PTS:1 REF:p.2168)"
+        },
+        {
+            id: 13,
+            question: "13. A client on the medical unit is found to have pulmonary tuberculosis (TB). What is the most appropriate precaution for the staff to take to prevent transmission of this disease?",
+            options: [
+                "A. Standard precautions only",
+                "B. Droplet precautions",
+                "C. Standard and contact precautions",
+                "D. Standard and airborne precautions"
+            ],
+            correct: 3, // D
+            rationale: "Airborne precautions are required for proven or suspected pulmonary TB. Standard precaution techniques are used in conjunction with the transmission-based precautions, regardless of the client's diagnosis. Droplet and contact precautions are insufficient. (PTS:1 REF:p.2151)"
+        },
+        {
+            id: 14,
+            question: "14. What is the best rationale for health care providers receiving the influenza vaccination on a yearly basis?",
+            options: [
+                "A. To decrease nurses' susceptibility to health care–associated infections",
+                "B. To decrease risk of transmission to vulnerable clients",
+                "C. To eventually eradicate the influenza virus in the United States",
+                "D. To prevent the emergence of drug-resistant strains of the influenza virus"
+            ],
+            correct: 1, // B
+            rationale: "To reduce the chance of transmission to vulnerable clients, health care workers are advised to obtain influenza vaccinations. The vaccine will not decrease nurses' risks of developing health care-associated infections, eradicate the influenza virus, or decrease the risk of developing new strains of the influenza virus. (PTS:1 REF:p.2157)"
+        },
+        {
+            id: 15,
+            question: "15. A client has presented at the ED with copious diarrhea and accompanying signs of dehydration. During the client's health history, the nurse learns that the client recently ate oysters from the Gulf of Mexico. The nurse should recognize the need to have the client's stool cultured for microorganisms associated with what disease?",
+            options: [
+                "A. Ebola",
+                "B. West Nile virus",
+                "C. Legionnaire disease",
+                "D. Cholera"
+            ],
+            correct: 3, // D
+            rationale: "In the U.S., cholera should be suspected in clients who have watery diarrhea after eating shellfish harvested from the Gulf of Mexico. (PTS:1 REF:p.2166)"
+        },
+        {
+            id: 16,
+            question: "16. A client is alarmed about testing positive for MRSA following culture testing during admission to the hospital. What should the nurse teach the client about this diagnostic finding?",
+            options: [
+                "A. 'There are promising treatments for MRSA, so this is no cause for serious concern.'",
+                "B. 'This doesn't mean that you have an infection; it shows that the bacteria live on one of your skin surfaces.'",
+                "C. 'The vast majority of clients in the hospital test positive for MRSA, but the infection doesn't normally cause serious symptoms.'",
+                "D. 'This finding is only preliminary, and your doctor will likely order further testing.'"
+            ],
+            correct: 1, // B
+            rationale: "This client's testing results are indicative of colonization, which is not synonymous with infection. The test results are considered reliable, and would not be characterized as 'preliminary.' Treatment is not normally prescribed for colonization. (PTS:1 REF:p.2154)"
+        },
+        {
+            id: 17,
+            question: "17. A client's diagnostic testing revealed that the client is colonized with vancomycin-resistant enterococcus (VRE). What change in the client's health status could precipitate an infection?",
+            options: [
+                "A. Use of a narrow-spectrum antibiotic",
+                "B. Treatment of a concurrent infection using vancomycin",
+                "C. Development of a skin break",
+                "D. Persistent contact of the bacteria with skin surfaces"
+            ],
+            correct: 2, // C
+            rationale: "Colonization can progress to infection if there is a portal of entry by which bacteria can invade body tissues. The use of vancomycin, or any other antibiotic, would not necessarily precipitate a VRE infection. Prolonged skin contact is similarly unlikely to cause infection, provided the skin remains intact. (PTS:1 REF:p.2154)"
+        },
+        {
+            id: 18,
+            question: "18. A clinic nurse is caring for a male client diagnosed with gonorrhea who has been prescribed ceftriaxone and doxycycline. The client asks why he is receiving two antibiotics. What is the nurse's best response?",
+            options: [
+                "A. 'There are many drug-resistant strains of gonorrhea, so more than one antibiotic may be required for successful treatment.'",
+                "B. 'The combination of these two antibiotics reduces the later risk of reinfection.'",
+                "C. 'Many people infected with gonorrhea are infected with chlamydia as well.'",
+                "D. 'This combination of medications will eradicate the infection twice as fast than a single antibiotic.'"
+            ],
+            correct: 2, // C
+            rationale: "Because clients are often coinfected with both gonorrhea and chlamydia, the CDC recommends dual therapy even if only gonorrhea has been laboratory proven. Although the number of resistant strains of gonorrhea has increased, that is not the reason for use of combination antibiotic therapy. Dual therapy is prescribed to treat both gonorrhea and chlamydia, because many clients with gonorrhea have a coexisting chlamydial infection. This combination of antibiotics does not reduce the risk of reinfection or provide a faster cure. (PTS:1 REF:p.2170)"
+        },
+        {
+            id: 19,
+            question: "19. A student nurse completing a preceptorship is reviewing the use of standard precautions. Which of the following practices is most consistent with standard precautions?",
+            options: [
+                "A. Wearing a mask and gown when starting an IV line",
+                "B. Washing hands immediately after removing gloves",
+                "C. Recapping all needles promptly after use to prevent needlestick injuries",
+                "D. Double-gloving when working with a client who has a bloodborne illness"
+            ],
+            correct: 1, // B
+            rationale: "Standard precautions are used to prevent contamination from blood and body fluids. Gloves are worn whenever exposure is possible, and hands should be washed after removing gloves. Needles are never recapped after use because this increases the risk of accidental needlesticks. Under ordinary circumstances, masks and gowns are not necessary for starting an IV line. Double-gloving is not a recognized component of standard precautions. (PTS:1 REF:p.2150)"
+        },
+        {
+            id: 20,
+            question: "20. A client is admitted from the ED diagnosed with Neisseria meningitides. What type of isolation precautions should the nurse institute?",
+            options: [
+                "A. Contact precautions",
+                "B. Droplet precautions",
+                "C. Airborne precautions",
+                "D. Observation precautions"
+            ],
+            correct: 1, // B
+            rationale: "This client requires droplet precautions because the organism can be transmitted through large airborne droplets when the client coughs, sneezes, or fails to cover the mouth. Smaller droplets can be addressed by airborne precautions, but this is insufficient for this microorganism. (PTS:1 REF:p.2151)"
+        },
+        {
+            id: 21,
+            question: "21. Because of pre-employment requirements, a female client in her first trimester of pregnancy is requesting a number of vaccines from her primary care provider. What vaccines are approved for her condition? Select all that apply.",
+            options: [
+                "A. Tetanus, diphtheria, and pertussis vaccine",
+                "B. Influenza injected vaccine",
+                "C. Varicella vaccine",
+                "D. Yellow fever vaccine",
+                "E. Measles, mumps, and rubella vaccine"
+            ],
+            correct: [0,1], // A, B
+            rationale: "Tetanus, diphtheria, and pertussis (Tdap) vaccine is approved for use in clients who are pregnant. The influenza vaccine injection, not the nasal spray (which is a live vaccine), is also approved for clients that are pregnant. In general, the client that is pregnant should not receive vaccines that use a weakened (attenuated/live) version of the disease to produce antibodies. Some live vaccines (e.g., varicella, MMR [against measles, mumps, and rubella], yellow fever) are contraindicated for clients who are severely immunosuppressed or pregnant. (PTS:1 REF:p.2176)"
+        },
+        {
+            id: 22,
+            question: "22. A parent brings the client's 12-month-old child to the clinic for a measles-mumps-rubella (MMR) vaccination. What would the clinic nurse advise the parent about the MMR vaccine?",
+            options: [
+                "A. Photophobia and hives might occur.",
+                "B. There are no documented reactions to an MMR.",
+                "C. Fever and hypersensitivity reaction might occur.",
+                "D. Hypothermia might occur."
+            ],
+            correct: 2, // C
+            rationale: "Clients should be advised that fever, transient lymphadenopathy, or a hypersensitivity reaction might occur following an MMR vaccination. Reactions to an MMR do not include photophobia or hypothermia. (PTS:1 REF:p.2156)"
+        },
+        {
+            id: 23,
+            question: "23. An older adult client tells the nurse that the client had chicken pox as a child and is eager to be vaccinated against shingles. What should the nurse teach the client about this vaccine?",
+            options: [
+                "A. Vaccination against shingles is contraindicated in clients over the age of 80.",
+                "B. Vaccination can reduce the risk of shingles by approximately 50%.",
+                "C. Vaccination against shingles involves a series of three injections over the course of 6 months.",
+                "D. Vaccination against shingles is only effective if preceded by a childhood varicella vaccination."
+            ],
+            correct: 1, // B
+            rationale: "Zostavax, a vaccine to reduce the risk of shingles, is recommended for people older than 60 years of age because it reduces the risk of shingles by approximately 50%. It does not need to be preceded by childhood varicella vaccine. The vaccine consists of a single injection. (PTS:1 REF:p.2157)"
+        },
+        {
+            id: 24,
+            question: "24. The nurse educator is discussing emerging diseases with a group of nurses. The educator should cite what causes of emerging diseases? Select all that apply.",
+            options: [
+                "A. Progressive weakening of human immune systems",
+                "B. Use of extended-spectrum antibiotics",
+                "C. Population movements",
+                "D. Increased global travel",
+                "E. Globalization of food supplies"
+            ],
+            correct: [1,2,3,4], // B, C, D, E
+            rationale: "Many factors contribute to newly emerging or re-emerging infectious diseases. These include travel, globalization of food supply and central processing of food, population growth, increased urban crowding, population movements (e.g., those that result from war, famine, or manmade or natural disasters), ecologic changes, human behavior (e.g., risky sexual behavior, IV/injection drug use), antimicrobial resistance, and breakdown in public health measures. Not noted is an overall decline in human immunity. (PTS:1 REF:p.2171)"
+        },
+        {
+            id: 25,
+            question: "25. An older adult client has been diagnosed with Legionella infection. When planning this client's care, the nurse should prioritize which of the following nursing actions?",
+            options: [
+                "A. Monitoring for evidence of skin breakdown",
+                "B. Emotional support and promotion of coping",
+                "C. Assessment for signs of internal hemorrhage",
+                "D. Vigilant monitoring of respiratory status"
+            ],
+            correct: 3, // D
+            rationale: "The lungs are the principal organs of Legionella infection. The client develops increasing pulmonary symptoms, including productive cough, dyspnea, and chest pain. Consequently, respiratory support is vital. Hemorrhage and skin breakdown are not central manifestations of the disease. Preservation of the client's airway is a priority over emotional support, even though this aspect of care is important. (PTS:1 REF:p.2175)"
+        },
+        {
+            id: 26,
+            question: "26. The nurse is providing care for an older adult client who has developed signs and symptoms of Calicivirus (Norovirus). What assessment should the nurse prioritize when planning this client's care?",
+            options: [
+                "A. Respiratory status",
+                "B. Pain",
+                "C. Fluid intake and output",
+                "D. Deep tendon reflexes and neurological status"
+            ],
+            correct: 2, // C
+            rationale: "The vomiting and diarrhea that accompany Norovirus create a severe risk of fluid volume deficit. For this reason, assessments relating to fluid balance should be prioritized, even though each of the listed assessments should be included in the plan of care. (PTS:1 REF:p.2165)"
+        },
+        {
+            id: 27,
+            question: "27. The nurse who provides care at a wilderness camp is teaching staff members about measures that reduce campers' and workers' risks of developing Giardia infections. The nurse should emphasize which of the following practices?",
+            options: [
+                "A. Making sure not to drink water that has not been purified",
+                "B. Avoiding the consumption of wild berries",
+                "C. Removing ticks safely and promptly",
+                "D. Using mosquito repellent consistently"
+            ],
+            correct: 0, // A
+            rationale: "Transmission of the protozoan Giardia lamblia occurs when food or drink is contaminated with viable cysts of the organism. People often become infected while traveling to endemic areas or by drinking contaminated water from mountain streams within the United States. Berries, mosquitoes, and ticks are not sources of this microorganism. (PTS:1 REF:p.2166)"
+        },
+        {
+            id: 28,
+            question: "28. A public health nurse promoting the annual influenza vaccination is focusing health promotion efforts on the populations most vulnerable to death from influenza. The nurse should focus on which of the following groups?",
+            options: [
+                "A. Preschool-aged children",
+                "B. Adults with diabetes and/or kidney disease",
+                "C. Older adults with compromised health status",
+                "D. Infants under the age of 12 months"
+            ],
+            correct: 2, // C
+            rationale: "Influenza vaccination is particularly beneficial in preventing death among older adults, especially those with compromised health status or those who live in institutional settings. It is recommended for children and adults, but carries the greatest reduction in morbidity and mortality in older adults. (PTS:1 REF:p.2157)"
+        },
+        {
+            id: 29,
+            question: "29. The nurse receives a phone call from a clinic client who experienced fever and slight dyspnea several hours after receiving the pneumococcus vaccine one day earlier. What is the nurse's most appropriate action?",
+            options: [
+                "A. Instruct the client to call 911.",
+                "B. Inform the client that this is an expected response to vaccination.",
+                "C. Encourage the client to take NSAIDs until symptoms are relieved.",
+                "D. Ensure that the adverse reaction is reported."
+            ],
+            correct: 3, // D
+            rationale: "Nurses should ask adult vaccine recipients to provide information about any problems encountered after vaccination. As mandated by law, a Vaccine Adverse Event Reporting System (VAERS) form must be completed with the following information: type of vaccine received, timing of vaccination, onset of the adverse event, current illnesses or medication, history of adverse events after vaccination, and demographic information about the recipient. NSAIDs are not necessarily required and no evidence of distress warrants a call to 911. This is not an expected response to vaccination. (PTS:1 REF:p.2156)"
+        },
+        {
+            id: 30,
+            question: "30. A nurse is educating a group of students about stages of syphilis. Which is true for secondary syphilis?",
+            options: [
+                "A. Chancres will resolve without treatment.",
+                "B. Transmission can occur with contact with chancres.",
+                "C. Multiple organ involvement occurs.",
+                "D. Neurological symptoms occur."
+            ],
+            correct: 1, // B
+            rationale: "Transmission can occur with contact with chancres during stage 2 or secondary syphilis. Resolving of chancres with or without treatment occurs in primary syphilis. Multiple organ involvement and neurological symptoms occur with progressive or tertiary syphilis. (PTS:1 REF:p.2168)"
+        },
+        {
+            id: 31,
+            question: "31. A client comes to the clinic for an evaluation. During the visit, the client reports a fever, malaise, hair loss, and weight loss. Further assessment reveals lymphadenopathy. The client also reports a penile ulcer that appeared about 4 weeks ago but went away. The nurse suspects the client may have syphilis and interprets the client's assessment findings as suggestive of which stage of this disease?",
+            options: [
+                "A. primary",
+                "B. secondary",
+                "C. latent",
+                "D. tertiary"
+            ],
+            correct: 1, // B
+            rationale: "Primary syphilis occurs 2 to 3 weeks after initial inoculation with the organism. A painless lesion at the site of infection is called a chancre. Untreated, these lesions usually resolve spontaneously within about 2 months. Secondary syphilis occurs when the hematogenous spread of organisms from the original chancre leads to generalized infection. The rash of secondary syphilis occurs about 2 to 8 weeks after the chancre and involves the trunk and the extremities, including the palms of the hands and the soles of the feet. Transmission of the organism can occur through contact with these lesions. Generalized signs of infection may include lymphadenopathy (abnormal enlargement of lymph nodes), arthritis, meningitis (inflammation of the pia mater, arachnoid mater, and the subarachnoid space), hair loss, fever, malaise, and weight loss. After the secondary stage, there is a period of latency, when the infected person has no signs or symptoms of syphilis. Latency can be interrupted by a recurrence of secondary syphilis. Tertiary syphilis is the final stage in the natural progression of the disease. It presents as a slowly progressive inflammatory disease with the potential to affect multiple organs. (PTS:1 REF:p.2168)"
+        },
+        {
+            id: 32,
+            question: "32. A nurse is preparing a presentation for a local high school health class about STIs. When discussing the most commonly reported STIs, which infection would the nurse most likely include? Select all that apply.",
+            options: [
+                "A. chlamydia",
+                "B. gonorrhea",
+                "C. human papillomavirus infection",
+                "D. herpes simplex 2 virus infection",
+                "E. syphilis"
+            ],
+            correct: [0,1], // A, B
+            rationale: "Chlamydia trachomatis and Neisseria gonorrheae are the most commonly reported STIs. Human papillomavirus (HPV) infection is the most common STI among young, sexually active people. Millions of Americans are infected with HPV, many unaware they carry the virus. The other STIs are less common. (PTS:1 REF:p.2169)"
+        }
+    ];
+
+    let currentQuestion = 0;
+    let selectedOption = null;
+    let answers = Array(questions.length).fill(null);
+
+    function loadQuestion() {
+        const q = questions[currentQuestion];
+        if (!q) return;
+
+        const progress = ((currentQuestion + 1) / questions.length) * 100;
+        document.getElementById('progressBar').style.width = `${progress}%`;
+        document.getElementById('counter').textContent = `${currentQuestion + 1}/${questions.length}`;
+        document.getElementById('questionNumber').textContent = q.id;
+
+        document.getElementById('question').innerHTML = q.question;
+        loadOptions(q);
+
+        document.getElementById('feedback').style.display = 'none';
+        document.getElementById('rationale').classList.remove('show');
+        document.getElementById('cancelBtn').classList.remove('show');
+
+        document.getElementById('prevBtn').disabled = currentQuestion === 0;
+        const stored = answers[q.id - 1];
+        document.getElementById('nextBtn').disabled = stored === null || stored === undefined;
+        document.getElementById('nextBtn').textContent = currentQuestion >= questions.length - 1 ? 'Finish ➡️' : 'Next ➡️';
+    }
+
+    function loadOptions(q) {
+        const container = document.getElementById('options');
+        container.innerHTML = '';
+        q.options.forEach((opt, idx) => {
+            const div = document.createElement('div');
+            div.className = 'option';
+            div.innerHTML = `<div class="option-letter">${String.fromCharCode(65 + idx)}</div><div>${opt}</div>`;
+            div.onclick = () => selectOption(idx);
+            container.appendChild(div);
+        });
+
+        const saved = answers[q.id - 1];
+        if (saved !== null && saved !== undefined) {
+            selectOption(saved, true);
+        }
+    }
+
+    function selectOption(index, fromMemory = false) {
+        const q = questions[currentQuestion];
+        if (!fromMemory && selectedOption !== null) return;
+
+        if (!fromMemory) {
+            selectedOption = index;
+            answers[q.id - 1] = index;
+        }
+
+        highlightSelected(index, q);
+        showFeedback(index, q);
+        document.getElementById('nextBtn').disabled = false;
+        document.getElementById('cancelBtn').classList.add('show');
+    }
+
+    function highlightSelected(index, q) {
+        const opts = document.querySelectorAll('.option');
+        opts.forEach((opt, i) => opt.classList.remove('correct', 'incorrect'));
+
+        const correctIndices = Array.isArray(q.correct) ? q.correct : [q.correct];
+        if (Array.isArray(q.correct)) {
+            correctIndices.forEach(ci => opts[ci]?.classList.add('correct'));
+            if (!correctIndices.includes(index)) {
+                opts[index]?.classList.add('incorrect');
+            }
+        } else {
+            if (index === q.correct) {
+                opts[index].classList.add('correct');
+            } else {
+                opts[index].classList.add('incorrect');
+                opts[q.correct].classList.add('correct');
+            }
+        }
+    }
+
+    function showFeedback(index, q) {
+        const fb = document.getElementById('feedback');
+        const icon = document.getElementById('feedbackIcon');
+        const text = document.getElementById('feedbackText');
+        const rationaleDiv = document.getElementById('rationale');
+        const rationaleP = document.getElementById('rationaleText');
+
+        const correctIndices = Array.isArray(q.correct) ? q.correct : [q.correct];
+        const isCorrect = correctIndices.includes(index);
+
+        if (isCorrect) {
+            fb.className = 'feedback correct';
+            icon.textContent = '✅';
+            text.textContent = 'CORRECT! Well done.';
+        } else {
+            fb.className = 'feedback incorrect';
+            icon.textContent = '❌';
+            const letters = correctIndices.map(c => String.fromCharCode(65 + c)).join(', ');
+            text.textContent = `INCORRECT. The correct answer(s): ${letters}`;
+        }
+
+        fb.style.display = 'flex';
+        rationaleP.innerHTML = q.rationale;
+        rationaleDiv.classList.add('show');
+    }
+
+    function cancelSelection() {
+        const q = questions[currentQuestion];
+        selectedOption = null;
+        answers[q.id - 1] = null;
+        document.querySelectorAll('.option').forEach(opt => opt.classList.remove('correct', 'incorrect'));
+        document.getElementById('feedback').style.display = 'none';
+        document.getElementById('rationale').classList.remove('show');
+        document.getElementById('cancelBtn').classList.remove('show');
+        document.getElementById('nextBtn').disabled = true;
+    }
+
+    function nextCard() {
+        if (currentQuestion < questions.length - 1) {
+            currentQuestion++;
+            selectedOption = null;
+            loadQuestion();
+        } else {
+            currentQuestion = 0;
+            loadQuestion();
+        }
+    }
+
+    function previousCard() {
+        if (currentQuestion > 0) {
+            currentQuestion--;
+            const q = questions[currentQuestion];
+            selectedOption = answers[q.id - 1];
+            loadQuestion();
+        }
+    }
+
+    // keyboard shortcuts
+    document.addEventListener('keydown', function(e) {
+        if (e.key >= '1' && e.key <= '4') selectOption(parseInt(e.key)-1);
+        else if (e.key >= 'a' && e.key <= 'd') selectOption(e.key.charCodeAt(0)-97);
+        else if (e.key >= 'A' && e.key <= 'D') selectOption(e.key.charCodeAt(0)-65);
+        else if (e.key === 'ArrowLeft' && !document.getElementById('prevBtn').disabled) previousCard();
+        else if (e.key === 'ArrowRight' && !document.getElementById('nextBtn').disabled) nextCard();
+        else if (e.key === 'Escape' && document.getElementById('cancelBtn').classList.contains('show')) cancelSelection();
+    });
+
+    loadQuestion();
+</script>
+</body>
+</html>
